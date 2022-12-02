@@ -3,7 +3,7 @@ from db.dbms import DBMS
 from db.simple_dbms import simple
 from db.occ_dbms import OCC
 
-algorithms = ["simple", "occ"]
+algorithms = {"simple":simple(), "occ":OCC()}
 
 def main():
     if (len(sys.argv)!=3):
@@ -13,13 +13,14 @@ def main():
         print("Algorithm is not found")
         print("Usage: main.py [algorithm=simple/occ] [transaction schedule]")
         return
+    dbms = algorithms[sys.argv[1]]
     filename = sys.argv[2]
     if (not os.path.isfile(filename)):
         print("File not found")
         print("Usage: main.py [algorithm=simple/occ] [transaction schedule]")
         return
     
-    dbms = simple()
+   
     f = open(filename, "r")
     lines = f.readlines()
     for line in lines:

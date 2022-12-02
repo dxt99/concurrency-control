@@ -35,7 +35,7 @@ class simple(DBMS):
         if (transaction not in self.started or transaction in self.completed):
             print(f"Transaction {transaction} failed to read {key}: not started or completed")
             return (False, None)
-        if ((key in self.locks) and self.locks[key]!=transaction):
+        if ((key in self.locks) and self.locks[key]!=transaction) or transaction in self.inQueue:
             print(f"Queued transaction {transaction} read {key}")
             self.queue.append(f"{transaction}: read {key}")
             self.inQueue.append(transaction)
@@ -50,7 +50,7 @@ class simple(DBMS):
         if (transaction not in self.started or transaction in self.completed):
             print(f"Transaction {transaction} failed to write {key} with value {value}: not started or completed")
             return (False, None)
-        if ((key in self.locks) and self.locks[key]!=transaction):
+        if ((key in self.locks) and self.locks[key]!=transaction) or transaction in self.inQueue:
             print(f"Queued transaction {transaction} write {key} with value {value}")
             self.queue.append(f"{transaction}: write {key} {value}")
             self.inQueue.append(transaction)

@@ -1,0 +1,13 @@
+T1: start
+T2: start
+T1: write a 5
+T2: read b
+T2: write b 3
+T1: commit
+T3: start
+T3: read a
+T3: write a 7
+T3: read b
+T3: write b 8
+T2: commit
+T3: commit
