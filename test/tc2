@@ -1,0 +1,7 @@
+T1: start
+T1: read x
+T2: start
+T2: read y
+T1: read y
+T1: commit
+T2: commit

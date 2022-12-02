@@ -8,7 +8,7 @@ class DBMS:
     
     def get(self, key:str) -> str:
         if key not in self.db:
-            self.db[key]=""
+            self.db[key]="{not set}"
         return self.db[key]
 
     def start(self, transaction:str) -> bool:
@@ -26,6 +26,7 @@ class DBMS:
     def parse(self, command:str):
         #print(command)
         if not(":" in command):
+            print("Unknown command found")
             return
         temp = command.split(":", 1)
         transaction = temp[0]
@@ -38,3 +39,5 @@ class DBMS:
             self.read(transaction, args[1])
         elif args[0].lower() == 'commit' and len(args)==1:
             self.commit(transaction)
+        else:
+            print("Unknown command found")
