@@ -9,8 +9,16 @@ class DBMS:
     
     def get(key:str) -> str:
         return self.db[key]
+
+    def start(transaction:str) -> bool:
+        raise NotImplementedError()
     
-    def append(key:str, value:str):
-        self.db[key] = self.db[key] + value
+    def commit(transaction:str) -> bool:
+        raise NotImplementedError()
     
+    def read(transaction:str, key:str) -> (bool, str):
+        raise NotImplementedError()
+    
+    def write(transaction:str, key:str, value:str) -> (bool, str):
+        raise NotImplementedError()
     
