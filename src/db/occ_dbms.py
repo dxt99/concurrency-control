@@ -51,7 +51,7 @@ class OCC(DBMS):
                 print(f"Transaction {transaction} write {key} with value {value}")
                 self.globalClock+=1
             self.completed[transaction] = self.globalClock
-            print(f"Commited transaction {transaction}")
+            print(f"Committed transaction {transaction}")
             return True
         else:
             # restart transaction
