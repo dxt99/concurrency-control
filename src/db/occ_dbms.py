@@ -1,4 +1,4 @@
-from dbms import DBMS
+from db.dbms import DBMS
 
 class OCC(DBMS):
     def __init__():
